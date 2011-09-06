@@ -2,19 +2,19 @@ package org.springframework.samples.webflow.ajax;
 
 import java.io.Serializable;
 
+import javax.inject.Singleton;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.context.annotation.Scope;
 import org.springframework.samples.webflow.dao.impl.PeopleDAO;
-import org.springframework.samples.webflow.dao.impl.UserDAO;
 import org.springframework.samples.webflow.model.People;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.webflow.execution.RequestContext;
 
-@Scope("request")
-@Qualifier("PeopleDAO")
+@Component("userBean")
+@Scope("session")
 public class UserBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
