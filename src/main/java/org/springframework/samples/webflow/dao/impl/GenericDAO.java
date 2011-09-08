@@ -49,8 +49,8 @@ public abstract class GenericDAO<T, ID extends Serializable> extends HibernateDa
     
     public T buscaPeloID(ID id) {
         try {
-        	return (T) sessionFactory.getCurrentSession().load(getPersistentClass(), id);
-        	//return (T) getHibernateTemplate().get(getPersistentClass(), id);
+        	//return (T) sessionFactory.getCurrentSession().load(getPersistentClass(), id);
+        	return (T) getHibernateTemplate().get(getPersistentClass(), id);
         } catch (final HibernateException ex) {
             GenericDAO.LOG.error(ex);
         }
@@ -59,7 +59,7 @@ public abstract class GenericDAO<T, ID extends Serializable> extends HibernateDa
 
     public List<T> buscaTodos() {
         try {
-        	Session session = sessionFactory.getCurrentSession();
+        	//Session session = sessionFactory.getCurrentSession();
             return getHibernateTemplate().loadAll(persistentClass);
         } catch (final HibernateException ex) {
             GenericDAO.LOG.error(ex);
@@ -69,8 +69,8 @@ public abstract class GenericDAO<T, ID extends Serializable> extends HibernateDa
 
     public T salva(T entity) {
         try {
-        	sessionFactory.getCurrentSession().merge(entity);
-        	//getHibernateTemplate().save(entity);
+        	//sessionFactory.getCurrentSession().merge(entity);
+        	getHibernateTemplate().save(entity);
             return entity;
         } catch (final HibernateException ex) {
             GenericDAO.LOG.error(ex);

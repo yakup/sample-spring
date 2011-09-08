@@ -37,6 +37,9 @@ public class UserBean implements Serializable {
 		if (haveFirst && haveLast) {
 			People people = new People();
 			people.setName(firstName);
+			people.setAddress(lastName);
+			people.setPhone(firstName);
+			people.setZipcode(firstName);
 			peopleDAO.salva(people);
 			return firstName + "." + lastName + "@fastmail.com";
 
